@@ -11,6 +11,7 @@ class Game {
   private $AI;
   private $winner;
   private $result;
+  private $AIremovedSticks;
 
   public function __construct($sticksLeft) {
 
@@ -24,15 +25,19 @@ class Game {
     $this->sticks->removeSticks($amount);
 
     if ($this->sticks->getSticksLeft() == 1) {
-      $this->winner = "Player"
+      $this->winner = "Player";
     }
   }
 
   public function AIRemoveSticks() {
 
-    $this->sticks->removeSticks($this->AI->sticksToRemove());
+    $this->AIRemoveSticks = $this->AI->sticksToRemove();
+
+    $this->sticks->removeSticks($this->AIRemoveSticks);
+
+    //$this->sticks->removeSticks($this->AI->sticksToRemove());
     if ($this->sticks->getSticksLeft() == 1) {
-      $this->winner = "AI"
+      $this->winner = "AI";
     }
   }
 
@@ -42,7 +47,7 @@ class Game {
 
   public function gameResult() {
     if ($this->sticks->getSticksLeft() <= 0) {
-      return $winner
+      return $winner;
     }
   }
 }

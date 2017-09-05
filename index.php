@@ -21,10 +21,10 @@ $game = new Game($_SESSION["sticksLeft"]);
 		<?php
 
     $game->playerRemoveSticks($_GET["Sticks"]);
-    echo "Player removed $_GET["Sticks"] sticks, {$game->sticksLeft();} left"
+    echo "Player removed " . $_GET["Sticks"] . " sticks, {" .$game->sticksLeft() ." } left ";
 
     $game->AIRemoveSticks();
-    echo "AI removed 1 sticks, {$game->sticksLeft();} left"
+    echo "AI removed 1 sticks, {" . $game->sticksLeft() . "} left ";
     $_SESSION["sticksLeft"] = $game->sticksLeft();
 
     if ($_SESSION["sticksLeft"] <= 0) {
